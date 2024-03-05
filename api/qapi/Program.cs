@@ -1,3 +1,7 @@
+using qapi.Model;
+
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -37,7 +41,8 @@ app.MapGet("/weatherforecast", () =>
 .WithOpenApi();
 
 app.MapGet("/DailyQuote", () =>{
-    return new aniquote("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
+    new Aniquote();
+    return new aniquoteX("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
     
 });
 
@@ -49,6 +54,6 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 }
 
 // Return image link, pixabay link, quote, author name, wikipedia link about author of quote, 
-record aniquote(string imageLink, string infoLink, String quote, string authorName, string wikiLink){
+record aniquoteX(string imageLink, string infoLink, String quote, string authorName, string wikiLink){
     
 }
