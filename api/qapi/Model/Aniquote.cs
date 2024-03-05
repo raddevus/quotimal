@@ -1,6 +1,6 @@
 namespace qapi.Model;
 
-class Aniquote{
+public class Aniquote{
     string Imagelink{get;set;}
     string InfoLink{get;set;}
     string Quote{get;set;}
