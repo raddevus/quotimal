@@ -7,7 +7,10 @@ class Aniquote{
     string Author{get;set;}
     string AuthorLink{get;set;}
 
-
+    public Aniquote()
+    {
+        
+    }
 
     public int getDayNumber(DateTime userDate){
         return userDate.DayOfYear;
