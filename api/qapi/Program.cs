@@ -1,7 +1,5 @@
 using qapi.Model;
 
-
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
