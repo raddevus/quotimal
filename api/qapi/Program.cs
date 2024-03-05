@@ -42,13 +42,17 @@ app.MapGet("/DailyQuote", () =>{
     new Aniquote();
     using var db = new AniquoteContext();
     Console.WriteLine(db.DbPath);
-    Console.WriteLine("Inserting a new blog");
-    db.Add(new Aniquote { ImageLink = "fakeImage linke",  InfoLink="information", Quote="Now is the time!", Author="abe lincoln",AuthorLink="info@abe.com", DayNumber=67 });
+    Console.WriteLine("Inserting a new aniquote");
+    db.Add(new Aniquote { ImageLink = "Flinstone Manor",  InfoLink="bedrock library", Quote="Bedrock is made of rocks!", Author="fred flintstone",AuthorLink="fred@Flintone.com", DayNumber=68 });
     db.SaveChanges();
 
+    var aniquote = db.Aniquote
+        .Where(s => s.DayNumber == 67)
+        //.Select(a => new Person())
+        .First();
     
 
-    return new aniquoteX("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
+    return aniquote; //  aniquoteX("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
     
 });
 
