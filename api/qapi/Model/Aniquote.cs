@@ -1,11 +1,13 @@
 namespace qapi.Model;
 
 public class Aniquote{
-    string Imagelink{get;set;}
-    string InfoLink{get;set;}
-    string Quote{get;set;}
-    string Author{get;set;}
-    string AuthorLink{get;set;}
+    public Int64 Id{get;set;}
+    public string ImageLink{get;set;}
+    public string InfoLink{get;set;}
+    public string Quote{get;set;}
+    public string Author{get;set;}
+    public string AuthorLink{get;set;}
+    public int DayNumber{get;set;}
 
     public Aniquote()
     {

@@ -40,6 +40,14 @@ app.MapGet("/weatherforecast", () =>
 
 app.MapGet("/DailyQuote", () =>{
     new Aniquote();
+    using var db = new AniquoteContext();
+    Console.WriteLine(db.DbPath);
+    Console.WriteLine("Inserting a new blog");
+    db.Add(new Aniquote { ImageLink = "fakeImage linke",  InfoLink="information", Quote="Now is the time!", Author="abe lincoln",AuthorLink="info@abe.com", DayNumber=67 });
+    db.SaveChanges();
+
+    
+
     return new aniquoteX("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
     
 });
