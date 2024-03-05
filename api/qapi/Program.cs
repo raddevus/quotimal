@@ -36,9 +36,19 @@ app.MapGet("/weatherforecast", () =>
 .WithName("GetWeatherForecast")
 .WithOpenApi();
 
+app.MapGet("/DailyQuote", () =>{
+    return new aniquote("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
+    
+});
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+}
+
+// Return image link, pixabay link, quote, author name, wikipedia link about author of quote, 
+record aniquote(string imageLink, string infoLink, String quote, string authorName, string wikiLink){
+    
 }
