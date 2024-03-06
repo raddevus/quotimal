@@ -43,9 +43,11 @@ app.MapGet("/DailyQuote", () =>{
     using var db = new AniquoteContext();
     Console.WriteLine(db.DbPath);
     Console.WriteLine("Inserting a new aniquote");
+    db.Add(new Aniquote { ImageLink = "AbeLincoln pix",  InfoLink="info about pic", Quote="Now is the time for all men.", Author="abe lincoln",AuthorLink="abe@wiki", DayNumber=67 });
     db.Add(new Aniquote { ImageLink = "Flinstone Manor",  InfoLink="bedrock library", Quote="Bedrock is made of rocks!", Author="fred flintstone",AuthorLink="fred@Flintone.com", DayNumber=68 });
     db.SaveChanges();
 
+    // TODO! Handle the issue if the query returns 0 records
     var aniquote = db.Aniquote
         .Where(s => s.DayNumber == 67)
         //.Select(a => new Person())
