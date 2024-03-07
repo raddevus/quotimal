@@ -37,11 +37,11 @@ public class AniquoteContext : DbContext
     protected String [] allTableCreation = {
         @"CREATE TABLE Aniquote
             ( [ID] INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-            [ImageLink] NVARCHAR(250)  NOT NULL check(length(ImageLink) <= 250),
-            [InfoLink] NVARCHAR(250)  NOT NULL check(length(InfoLink) <= 250),
-            [Quote] NVARCHAR(750)  NOT NULL check(length(Quote) <= 750),
-            [Author] NVARCHAR(200)  NOT NULL check(length(Author) <= 200),
-            [AuthorLink] NVARCHAR(250)  NOT NULL check(length(AuthorLink) <= 250),
+            [ImageLink] NVARCHAR(350)  NOT NULL check(length(ImageLink) <= 350),
+            [InfoLink] NVARCHAR(350)  NOT NULL check(length(InfoLink) <= 350),
+            [Quote] NVARCHAR(1000)  NOT NULL check(length(Quote) <= 1000),
+            [Author] NVARCHAR(250)  NOT NULL check(length(Author) <= 250),
+            [AuthorLink] NVARCHAR(350)  NOT NULL check(length(AuthorLink) <= 350),
             [DayNumber] INTEGER NOT NULL default 0
             )"
     };

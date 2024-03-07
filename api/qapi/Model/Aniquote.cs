@@ -14,7 +14,7 @@ public class Aniquote{
         
     }
 
-    public int getDayNumber(DateTime userDate){
+    public static int getDayNumber(DateTime userDate){
         return userDate.DayOfYear;
     }
 }

@@ -29,21 +29,24 @@ app.MapGet("/getdatetime", () =>
 .WithOpenApi();
 
 app.MapGet("/DailyQuote", () =>{
-    new Aniquote();
+    var daynum = Aniquote.getDayNumber(DateTime.Now);
+    Console.WriteLine($"daynum: {daynum}");
     using var db = new AniquoteContext();
     Console.WriteLine(db.DbPath);
-    Console.WriteLine("Inserting a new aniquote");
-    db.Add(new Aniquote { ImageLink = "AbeLincoln pix",  InfoLink="info about pic", Quote="Now is the time for all men.", Author="abe lincoln",AuthorLink="abe@wiki", DayNumber=67 });
-    db.Add(new Aniquote { ImageLink = "Flinstone Manor",  InfoLink="bedrock library", Quote="Bedrock is made of rocks!", Author="fred flintstone",AuthorLink="fred@Flintone.com", DayNumber=68 });
-    db.SaveChanges();
 
-    // TODO! Handle the issue if the query returns 0 records
-    var aniquote = db.Aniquote
-        .Where(s => s.DayNumber == 67)
-        //.Select(a => new Person())
-        .First();
-    
-
+    Aniquote aniquote = null;
+    try{
+        // if you can't get a quote with daynumber then always return the 1st quote.
+        // this insures it works, even if there is only one quote in db.
+        aniquote = db.Aniquote
+            .Where(s => s.DayNumber == daynum)
+            .First();
+    }
+    catch{
+        aniquote = db.Aniquote
+            .Where(s => s.DayNumber == 1)
+            .First();
+    }
     return aniquote; //  aniquoteX("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
     
 });
