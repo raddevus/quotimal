@@ -26,17 +26,9 @@ var summaries = new[]
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
-app.MapGet("/weatherforecast", () =>
+app.MapGet("/getdatetime", () =>
 {
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
+    return DateTime.Now;
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
@@ -62,13 +54,3 @@ app.MapGet("/DailyQuote", () =>{
 });
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
-
-// Return image link, pixabay link, quote, author name, wikipedia link about author of quote, 
-record aniquoteX(string imageLink, string infoLink, String quote, string authorName, string wikiLink){
-    
-}
