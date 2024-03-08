@@ -47,7 +47,7 @@ app.MapGet("/DailyQuote", () =>{
             .Where(s => s.DayNumber == 1)
             .First();
     }
-    return aniquote; //  aniquoteX("imageLink","infoLink-pixabay","now is the good time","abe lincoln", "wikiyes!");
+    return aniquote;
     
 });
 
