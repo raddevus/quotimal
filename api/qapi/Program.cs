@@ -51,4 +51,7 @@ app.MapGet("/DailyQuote", () =>{
     
 });
 
+app.UseRouting();
+app.UseStaticFiles();
+
 app.Run();
