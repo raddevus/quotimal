@@ -1,4 +1,5 @@
 using qapi.Model;
+using System.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,7 @@ builder.WebHost.ConfigureKestrel((context, serverOptions) =>
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+//builder.Services.AddRouting();
 
 var app = builder.Build();
 
@@ -42,16 +44,19 @@ app.MapGet("/DailyQuote", () =>{
             .Where(s => s.DayNumber == daynum)
             .First();
     }
-    catch{
-        aniquote = db.Aniquote
-            .Where(s => s.DayNumber == 1)
-            .First();
+    catch(Exception ex){
+        aniquote = new Aniquote{
+                ImageLink = "https://pixabay.com/photos/owl-burrowing-owl-bird-animal-3649048/",
+                InfoLink = "https://pixabay.com/photos/owl-burrowing-owl-bird-animal-3649048/",
+                Quote = "The reasonable man adapts himself to the world: the unreasonable one persists in trying to adapt the world to himself. Therefore all progress depends on the unreasonable man.",
+                Author = "George Bernard Shaw",
+                AuthorLink = "https://en.wikipedia.org/wiki/George_Bernard_Shaw",
+                DayNumber = 55
+            };
     }
     return aniquote;
     
 });
-
-app.UseRouting();
 app.UseStaticFiles();
 
 app.Run();
